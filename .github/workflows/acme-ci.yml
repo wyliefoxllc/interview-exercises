@@ -18,7 +18,7 @@ defaults:
 jobs:
   fraud-model-benchmark:
     name: Fraud model benchmark
-    runs-on: ubuntu-latest-4-cores
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
@@ -37,7 +37,7 @@ jobs:
 
   unit-tests:
     name: Unit tests shard ${{ matrix.shard }}/8
-    runs-on: ubuntu-latest-8-cores
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     strategy:
       fail-fast: false
       matrix:
@@ -56,7 +56,7 @@ jobs:
 
   integration-tests:
     name: Integration tests
-    runs-on: ubuntu-latest-16-cores
+    runs-on: blacksmith-16vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
@@ -88,10 +88,10 @@ jobs:
         include:
           - platform: linux/amd64
             tag-suffix: linux-amd64
-            runner: ubuntu-latest-4-cores
+            runner: blacksmith-4vcpu-ubuntu-2404
           - platform: linux/arm64
             tag-suffix: linux-arm64
-            runner: ubuntu-latest-4-cores
+            runner: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
